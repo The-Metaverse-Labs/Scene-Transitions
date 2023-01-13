@@ -1,0 +1,9 @@
+{
+    "name": "com.ey.metaverselabs.scenetransitions",
+    "version": "0.0.1",
+    "displayName": "Scene Transitions",
+    "description": "Assests for making transitions between unity scenes",
+    "unity": "2018.1",
+    "dependencies": {
+    }
+}

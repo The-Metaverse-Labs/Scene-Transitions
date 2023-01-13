@@ -2,37 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneLoaderTrigger: MonoBehaviour
+namespace SceneTransitions
 {
-    public enum TriggerType
+    public class SceneLoaderTrigger : MonoBehaviour
     {
-        ASide, BSide, Center
-    }
-    public TriggerType Type;
-    public SceneLoader Loader { get { return GetComponentInParent<SceneLoader>(); } }
-    
-    public void OnTriggerEnter(Collider other)
-    {
-        if (!other.gameObject.Equals(Camera.main.gameObject)) return;
+        public enum TriggerType
+        {
+            ASide, BSide, Center
+        }
+        public TriggerType Type;
+        public SceneLoader Loader { get { return GetComponentInParent<SceneLoader>(); } }
 
-        //Debug.Log($"[SceneLoaderTrigger] Triggered {Type}");
-        if (Type == TriggerType.ASide)
+        public void OnTriggerEnter(Collider other)
         {
-            Loader.RemoveBScene();
-        }
-        else if (Type == TriggerType.BSide)
-        {
-            Loader.RemoveAScene();
-        }
-        else
-        {
-            Loader.LoadAScene();
-            Loader.LoadBScene();
-        }
-    }
+            if (!other.gameObject.Equals(Camera.main.gameObject)) return;
 
-    public void OnTriggerExit(Collider other)
-    {
-        
+            //Debug.Log($"[SceneLoaderTrigger] Triggered {Type}");
+            if (Type == TriggerType.ASide)
+            {
+                Loader.RemoveBScene();
+            }
+            else if (Type == TriggerType.BSide)
+            {
+                Loader.RemoveAScene();
+            }
+            else
+            {
+                Loader.LoadAScene();
+                Loader.LoadBScene();
+            }
+        }
+
+        public void OnTriggerExit(Collider other)
+        {
+
+        }
     }
 }

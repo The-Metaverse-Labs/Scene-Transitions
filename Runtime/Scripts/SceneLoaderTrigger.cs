@@ -15,7 +15,7 @@ namespace SceneTransitions
 
         public void OnTriggerEnter(Collider other)
         {
-            if (!Camera.main || !other.gameObject.Equals(Camera.main.gameObject)) return;
+            if (!other.tag.Equals("Player")) return;
 
             //Debug.Log($"[SceneLoaderTrigger] Triggered {Type}");
             if (Type == TriggerType.ASide)
